@@ -49,10 +49,11 @@ internal actual fun TextSpacingRemoved(
             textDecoration = textDecoration,
             fontStyle = fontStyle,
             letterSpacing = letterSpacing,
-            lineHeightStyle = LineHeightStyle(
-                alignment = LineHeightStyle.Alignment.Proportional,
-                trim = LineHeightStyle.Trim.Both,
-            )
+            lineHeightStyle =
+                LineHeightStyle(
+                    alignment = LineHeightStyle.Alignment.Proportional,
+                    trim = LineHeightStyle.Trim.Both,
+                ),
         ),
         onTextLayout,
         overflow,

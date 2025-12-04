@@ -283,24 +283,26 @@ private fun calculateAnnotatedString(
                         Placeholder(
                             width = width,
                             height = height,
-                            placeholderVerticalAlign = when (style.lineHeightStyle?.alignment) {
-                                LineHeightStyle.Alignment.Center ->
-                                    PlaceholderVerticalAlign.TextCenter
-                                LineHeightStyle.Alignment.Top ->
-                                    PlaceholderVerticalAlign.TextTop
-                                LineHeightStyle.Alignment.Bottom ->
-                                    PlaceholderVerticalAlign.TextBottom
-                                else -> PlaceholderVerticalAlign.TextCenter
-                            },
+                            placeholderVerticalAlign =
+                                when (style.lineHeightStyle?.alignment) {
+                                    LineHeightStyle.Alignment.Center ->
+                                        PlaceholderVerticalAlign.TextCenter
+                                    LineHeightStyle.Alignment.Top ->
+                                        PlaceholderVerticalAlign.TextTop
+                                    LineHeightStyle.Alignment.Bottom ->
+                                        PlaceholderVerticalAlign.TextBottom
+                                    else -> PlaceholderVerticalAlign.TextCenter
+                                },
                         ),
                     children = {
                         Box(
-                            contentAlignment = when (style.lineHeightStyle?.alignment) {
-                                LineHeightStyle.Alignment.Center -> Alignment.Center
-                                LineHeightStyle.Alignment.Top -> Alignment.TopCenter
-                                LineHeightStyle.Alignment.Bottom -> Alignment.BottomCenter
-                                else -> Alignment.Center
-                            },
+                            contentAlignment =
+                                when (style.lineHeightStyle?.alignment) {
+                                    LineHeightStyle.Alignment.Center -> Alignment.Center
+                                    LineHeightStyle.Alignment.Top -> Alignment.TopCenter
+                                    LineHeightStyle.Alignment.Bottom -> Alignment.BottomCenter
+                                    else -> Alignment.Center
+                                },
                             modifier = Modifier.fillMaxSize(),
                         ) {
                             TextSpacingRemoved(
@@ -323,15 +325,15 @@ private fun calculateAnnotatedString(
                                                         style.fontSize.toPx() * 0.5f +
                                                             furiganaFontSize.toPx() * 0.5f +
                                                             furiganaGap.toPx() +
-                                                        when (style.lineHeightStyle?.alignment) {
-                                                            LineHeightStyle.Alignment.Center ->
-                                                                0f
-                                                            LineHeightStyle.Alignment.Top ->
-                                                                -style.fontSize.toPx() * 0.5f
-                                                            LineHeightStyle.Alignment.Bottom ->
-                                                                style.fontSize.toPx() * 0.5f
-                                                            else -> 0f
-                                                        }
+                                                            when (style.lineHeightStyle?.alignment) {
+                                                                LineHeightStyle.Alignment.Center ->
+                                                                    0f
+                                                                LineHeightStyle.Alignment.Top ->
+                                                                    -style.fontSize.toPx() * 0.5f
+                                                                LineHeightStyle.Alignment.Bottom ->
+                                                                    style.fontSize.toPx() * 0.5f
+                                                                else -> 0f
+                                                            }
                                                     )
                                             },
                                 ) {
