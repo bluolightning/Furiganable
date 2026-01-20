@@ -55,6 +55,8 @@ import kotlin.math.max
  * @param furiganaFontSize Font size for the furigana text. If unspecified, `style.fontSize * 0.45f`.
  * @param furiganaLineHeight Line height for the furigana text. If unspecified, uses `furiganaFontSize`.
  * @param furiganaLetterSpacing Letter spacing for the furigana text. If unspecified, uses `-style.fontSize * 0.03f`.
+ * @param furiganaColor Color for the furigana text. If [Color.Unspecified], falls back to inherited style.
+ * @param furiganaFontWeight Font weight for the furigana text. If null, falls back to inherited style.
  *
  * @param modifier Modifier to apply to the layout.
  * @param color Text color. If [Color.Unspecified], falls back to [style.color] or [LocalContentColor].
@@ -97,6 +99,8 @@ fun TextWithReadingCore(
     furiganaFontSize: TextUnit = TextUnit.Unspecified,
     furiganaLineHeight: TextUnit = TextUnit.Unspecified,
     furiganaLetterSpacing: TextUnit = TextUnit.Unspecified,
+    furiganaColor: Color = Color.Unspecified,
+    furiganaFontWeight: FontWeight? = null,
 ) {
     val textColor =
         color.takeOrElse {
@@ -189,6 +193,8 @@ fun TextWithReadingCore(
                     furiganaFontSize = resolvedFuriganaFontSize,
                     furiganaLineHeight = resolvedFuriganaLineHeight,
                     furiganaLetterSpacing = resolvedFuriganaLetterSpacing,
+                    furiganaColor = furiganaColor,
+                    furiganaFontWeight = furiganaFontWeight,
                     fontResolver = fontResolver,
                     density = density,
                 )
@@ -230,6 +236,8 @@ private fun calculateAnnotatedString(
     furiganaFontSize: TextUnit,
     furiganaLineHeight: TextUnit,
     furiganaLetterSpacing: TextUnit,
+    furiganaColor: Color,
+    furiganaFontWeight: FontWeight?,
     fontResolver: FontFamily.Resolver,
     density: Density,
 ): Pair<AnnotatedString, Map<String, InlineTextContent>> {
@@ -260,6 +268,7 @@ private fun calculateAnnotatedString(
                         style.merge(
                             fontSize = furiganaFontSize,
                             letterSpacing = furiganaLetterSpacing,
+                            fontWeight = furiganaFontWeight,
                         ),
                     density = density,
                     layoutDirection = LayoutDirection.Ltr,
@@ -349,6 +358,8 @@ private fun calculateAnnotatedString(
                                                 fontSize = furiganaFontSize,
                                                 lineHeight = furiganaLineHeight,
                                                 letterSpacing = furiganaLetterSpacing,
+                                                color = if (furiganaColor != Color.Unspecified) furiganaColor else style.color,
+                                                fontWeight = furiganaFontWeight ?: style.fontWeight,
                                             ),
                                     )
                                 }

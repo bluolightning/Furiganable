@@ -61,6 +61,8 @@ fun TextWithReading(
     furiganaFontSize: TextUnit = TextUnit.Unspecified,
     furiganaLineHeight: TextUnit = TextUnit.Unspecified,
     furiganaLetterSpacing: TextUnit = TextUnit.Unspecified,
+    furiganaColor: Color = Color.Unspecified,
+    furiganaFontWeight: FontWeight? = null,
 ) {
     val textColor = color.takeOrElse { style.color.takeOrElse { LocalContentColor.current } }
 
@@ -87,5 +89,7 @@ fun TextWithReading(
         furiganaFontSize = furiganaFontSize,
         furiganaLineHeight = furiganaLineHeight,
         furiganaLetterSpacing = furiganaLetterSpacing,
+        furiganaColor = furiganaColor,
+        furiganaFontWeight = furiganaFontWeight,
     )
 }
